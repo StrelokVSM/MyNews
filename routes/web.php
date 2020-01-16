@@ -12,6 +12,4 @@
 */
 
 Route::get('/', 'PostController@index');
-Route::get('/View', function () {
-  return 'View NEWS';
-});
+Route::get('/view/{id}', 'PostController@show')->name('new');//передаем параметр id форме

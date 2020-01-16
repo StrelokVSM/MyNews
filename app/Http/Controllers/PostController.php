@@ -11,4 +11,8 @@ class PostController extends Controller
       $datas = Posts::all();
     	return view('main', ['datas'=>$datas]);
     }
+    public function show($id){
+      $data = Posts::find($id);
+    	return view('list_news', ['data'=>$data]);
+    }
 }
