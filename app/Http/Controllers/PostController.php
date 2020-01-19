@@ -7,12 +7,12 @@ use App\Posts;
 
 class PostController extends Controller
 {
-    public function index(){
-      $datas = Posts::all();
-    	return view('main', ['datas'=>$datas]);
-    }
-    public function show($id){
-      $data = Posts::find($id);
-    	return view('list_news', ['data'=>$data]);
-    }
+  public function index(){
+    $datas = Posts::all();
+  	return view('main', ['datas'=>$datas]);
+  }
+  public function show($id){
+    $data = Posts::find($id);
+  	return view('list_news', ['data'=>$data]);
+  }
 }

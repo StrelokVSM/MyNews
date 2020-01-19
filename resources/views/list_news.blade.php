@@ -10,6 +10,10 @@
     font: 1.2em Arial, Helvetica, sans-serif; /* Шрифт на веб-странице */
    }
    a { color: #008BCE; /* Цвет ссылок */ }
+   #hr_comments {
+     width: 600px;
+     margin: 0 150px; /* Ширина колонок */
+   }
    #center {
     width: 600px; /* Ширина макета */
     margin: 0 auto; /* Выравниваем по центру */
@@ -69,9 +73,17 @@
 
       <p class="card-text">{{ $data->body }}</p>
 
-      </p><div class="article__clear"></div>
+      </p>
+      <div class="comments">
+        <br />
+        <hr size="2" color="#ff0000"/>
+
+          <p>dd($comments)</p>
+          <br />
+      </div>
     </div>
   </div>
+
 </div>
 
 @endsection

@@ -13,3 +13,4 @@
 
 Route::get('/', 'PostController@index');
 Route::get('/view/{id}', 'PostController@show')->name('new');//передаем параметр id форме
+Route::get('/view', 'CommentController@index');
