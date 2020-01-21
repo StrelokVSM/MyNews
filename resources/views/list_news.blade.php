@@ -15,7 +15,7 @@
      margin: 0 150px; /* Ширина колонок */
    }
    #center {
-    width: 600px; /* Ширина макета */
+    width: 800px; /* Ширина макета */
     margin: 0 auto; /* Выравниваем по центру */
    }
    #header {
@@ -28,7 +28,7 @@
     float: left; width: 110px; padding: 5px;
    }
    #center {
-    margin: 0 150px; /* Ширина колонок */
+    margin: 0 100px; /* Ширина колонок */
     padding: 10px;
    }
    #aside {
@@ -51,7 +51,8 @@
     <div class="article__header js-article-header">
       <div class="article__header__title">
         <h1 class="js-slide-title" itemprop="headline">{{ $data->title }}</h1>
-        <span>{{ $data->created_at }}</span>
+        <br />
+        <sub><b>{{ $data->author->name}}</b> {{ $data->created_at }}</sub>
       </div>
     </div>
     <div class="article__text article__text_free" itemprop="articleBody">
@@ -74,13 +75,18 @@
       <p class="card-text">{{ $data->body }}</p>
 
       </p>
-      <div class="comments">
-        <br />
-        <hr size="2" color="#ff0000"/>
+      <p><b>Комментарии</b></p>
+      <p>
 
-          <p>dd($comments)</p>
-          <br />
+      </p>
+      @foreach($data->comments as $comment)
+      <div class="comm">
+        <sub><b>{{$comment->author->name}}</b> {{$comment->created_at}}</sub>
+
+        <p>{{ $comment->body }}</p>
+        <hr size="2" color="#ff4000"/>
       </div>
+      @endforeach
     </div>
   </div>
 
