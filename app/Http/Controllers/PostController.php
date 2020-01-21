@@ -8,7 +8,7 @@ use App\Posts;
 class PostController extends Controller
 {
   public function index(){
-    $datas = Posts::all();
+    $datas = Posts::paginate(12);// Пагинация
   	return view('main', ['datas'=>$datas]);
   }
   public function show($id){

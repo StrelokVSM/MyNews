@@ -81,15 +81,14 @@
       </p>
       @foreach($data->comments as $comment)
       <div class="comm">
-        <sub><b>{{$comment->author->name}}</b> {{$comment->created_at}}</sub>
-
+        <sub align="right"><b>{{$comment->author->name}}</b> {{$comment->created_at}}</sub>
+        <hr size="1" color="#000000"/>
         <p>{{ $comment->body }}</p>
         <hr size="2" color="#ff4000"/>
       </div>
       @endforeach
     </div>
   </div>
-
 </div>
 
 @endsection
