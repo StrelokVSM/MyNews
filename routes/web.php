@@ -14,6 +14,9 @@
 Route::get('/', 'PostController@index');
 Route::get('/view/{id}', 'PostController@show')->name('new');//передаем параметр id форме
 Route::get('/view', 'CommentController@index');
+Route::get('/admintable', 'PostController@index_admin');
+Route::get('/admintable/{id}', 'PostController@show_admin')->name('edit_new');//передаем параметр id форме
+Route::post('/admintable/{id}', 'PostController@edit');//передаем параметр id форме
 
 Auth::routes();
 
