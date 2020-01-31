@@ -9,6 +9,11 @@
 
 @section('content')
 <br>
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
 <form action="/admintable/{{ $data->id }}" method="POST">
     <div class="form-group">
         <label for="exampleFormControlSelect1">Имя автора</label>
@@ -19,7 +24,7 @@
         <input type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="Title">
     </div>
     <div class="form-group">
-        <label for="exampleFormControlSelect1">Slug</label></label>
+        <label for="exampleFormControlSelect1">Slug</label>
         <input type="text" class="form-control" name="slug" value="{{ $data->slug }}" placeholder="Slug">
     </div>
     <div class="form-group">
@@ -33,12 +38,15 @@
         <label for="exampleFormControlTextarea1">body</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" name="body" rows="10">{{ $data->body }}</textarea>
     </div>
-</form>
-<div class="form-group row mb-0">
-    <div class="col-md-6 offset-md-4">
-        <button type="submit" class="btn btn-primary">
-            {{ __('Обновить') }}
-        </button>
+    @csrf
+    <input type="hidden" name="id" value="{{$data->id}}">
+    <div class="form-group row mb-0">
+        <div class="col-md-6 offset-md-4">
+            <button type="submit" class="btn btn-primary">
+                {{ __('Обновить') }}
+            </button>
+        </div>
     </div>
-</div>
+</form>
+
 @endsection

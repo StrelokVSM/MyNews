@@ -23,10 +23,13 @@ class PostController extends Controller
         $data = Posts::find($id);
         	return view('/admin/edit_new', ['data'=>$data]);
     }
-    public function edit(Request $id, $title, $body, $slug, $active, $created_at, $updated_at) {
-        $name = $request->input('stud_name');
-        Post::update('update student set name = ? where id = ?',[$id, $title, $body, $slug, $active, $created_at, $updated_at]);
-        echo "Record updated successfully.<br/>";
-        echo '<a href = "/admintable">Click Here</a> to go back.';
+    public function edit(Request $request) {
+        //dd($request);
+        //$name = $request->input('stud_name');
+        $model=Posts::find($request->input('id'));
+        $model->title=$request->input('title');
+        $model->save();
+        //Post::update('update student set name = ? where id = ?',[$id, $title, $body, $slug, $active, $created_at, $updated_at]);
+        return redirect()->back()->with('status', 'Profile updated!');;
   }
 }
