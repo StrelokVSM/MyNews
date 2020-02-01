@@ -58,4 +58,16 @@ class PostController extends Controller
 
         return redirect()->route('admintable')->with('status', "New delete!");
     }
+<<<<<<< HEAD
+=======
+    public function edit(Request $request) {
+        //dd($request);
+        //$name = $request->input('stud_name');
+        $model=Posts::find($request->input('id'));
+        $model->title=$request->input('title');
+        $model->save();
+        //Post::update('update student set name = ? where id = ?',[$id, $title, $body, $slug, $active, $created_at, $updated_at]);
+        return redirect()->back()->with('status', 'Profile updated!');;
+  }
+>>>>>>> 958d6025c522604f65edb0b51516a6ddeb68f951
 }
