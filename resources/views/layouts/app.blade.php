@@ -37,7 +37,7 @@
                     <a class="nav-link" href="/">Home </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="/">Create new</a>
                   </li>
                   @if ( Auth::user()->role == 'admin' )
                   <li class="nav-item dropdown">
@@ -45,7 +45,7 @@
                     Admin
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="/admintable">Table news</a>
+                      <a class="dropdown-item" href="{{ route('admintable') }}">Table news</a>
                       <a class="dropdown-item" href="#">Another action</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#">Something else here</a>

@@ -11,4 +11,12 @@ class CommentController extends Controller
     $comments = Comments::all();
   	return view('list_news', ['comments'=>$comments]);
   }
+  public function delete($id) {
+      //Удаление новости
+      //dd($id);
+      $model=Comments::find($id);
+      $model->delete();
+
+      return redirect()->back()->with('status', "comments delete!");
+  }
 }

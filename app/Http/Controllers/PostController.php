@@ -23,10 +23,39 @@ class PostController extends Controller
         $data = Posts::find($id);
         	return view('/admin/edit_new', ['data'=>$data]);
     }
-    public function edit(Request $id, $title, $body, $slug, $active, $created_at, $updated_at) {
-        $name = $request->input('stud_name');
-        Post::update('update student set name = ? where id = ?',[$id, $title, $body, $slug, $active, $created_at, $updated_at]);
-        echo "Record updated successfully.<br/>";
-        echo '<a href = "/admintable">Click Here</a> to go back.';
-  }
+
+    public function show_create_new() {
+        return view('/admin/create_new');
+    }
+    public function create_new(Request $request) {
+        //Редактирование новости
+        $model= new Posts;
+
+        $model->title=$request->input('title');
+        $model->body=$request->input('body');
+        $model->slug=$request->input('slug');
+        $model->active=$request->input('active');
+        $model->save();
+
+        return redirect()->route('admintable')->with('status', 'New created!');
+    }
+    public function edit(Request $request) {
+        //Редактирование новости
+        $model=Posts::find($request->input('id'));
+        $model->title=$request->input('title');
+        $model->body=$request->input('body');
+        $model->slug=$request->input('slug');
+        $model->active=$request->input('active');
+        $model->save();
+
+        return redirect()->route('admintable')->with('status', 'Profile updated!');
+    }
+    public function delete($id) {
+        //Удаление новости
+        //dd($id);
+        $model=Posts::find($id);
+        $model->delete();
+
+        return redirect()->route('admintable')->with('status', "New delete!");
+    }
 }
