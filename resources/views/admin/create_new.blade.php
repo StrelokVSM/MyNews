@@ -9,27 +9,22 @@
 
 @section('content')
 <br>
-@if (session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-@endif
 <form action="/admintable/{{ $data->id }}" method="POST">
     <div class="form-group">
         <label for="exampleFormControlSelect1">Имя автора</label>
-        <input type="text" class="form-control" value="{{ $data->author->name }}" placeholder="Name User">
+        <input type="text" class="form-control" placeholder="Name User">
     </div>
     <div class="form-group">
         <label for="exampleFormControlSelect1">Заголовок</label>
-        <input type="text" class="form-control" name="title" value="{{ $data->title }}" placeholder="Title">
+        <input type="text" class="form-control" name="title" placeholder="Title">
     </div>
     <div class="form-group">
         <label for="exampleFormControlSelect1">Slug</label>
-        <input type="text" class="form-control" name="slug" value="{{ $data->slug }}" placeholder="Slug">
+        <input type="text" class="form-control" name="slug" placeholder="Slug">
     </div>
     <div class="form-group">
         <label for="exampleFormControlSelect1">Активный</label>
-        <select class="form-control" id="exampleFormControlSelect1" name="active" value="{{ $data->active }}">
+        <select class="form-control" id="exampleFormControlSelect1" name="active">
             <option>0</option>
             <option>1</option>
         </select>
@@ -43,7 +38,7 @@
     <div class="form-group row mb-0">
         <div class="col-md-6 offset-md-4">
             <button type="submit" class="btn btn-primary">
-                {{ __('Обновить') }}
+                {{ __('Добавить') }}
             </button>
         </div>
     </div>
