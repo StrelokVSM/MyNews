@@ -37,7 +37,7 @@
                     <a class="nav-link" href="/">Home </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/">Create new</a>
+                    <a class="nav-link" href="{{route('insertform')}}">Create new</a>
                   </li>
                   @if ( Auth::user()->role == 'admin' )
                   <li class="nav-item dropdown">

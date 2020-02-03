@@ -24,20 +24,20 @@ class PostController extends Controller
         	return view('/admin/edit_new', ['data'=>$data]);
     }
 
-    public function show_create_new() {
-        return view('/admin/create_new');
+    public function insertform() {
+        return view('/insert_new');
     }
-    public function create_new(Request $request) {
+    public function insert(Request $request) {
         //Редактирование новости
         $model= new Posts;
-
-        $model->title=$request->input('title');
-        $model->body=$request->input('body');
-        $model->slug=$request->input('slug');
-        $model->active=$request->input('active');
+        $model->user_id = $request->input('user_id');
+        $model->title = $request->input('title');
+        $model->body = $request->input('body');
+        $model->slug = $request->input('slug');
+        $model->active = $request->input('active');
         $model->save();
 
-        return redirect()->route('admintable')->with('status', 'New created!');
+        return view('list_news', ['data'=>$model])->with('status', 'New created!');
     }
     public function edit(Request $request) {
         //Редактирование новости
@@ -58,16 +58,4 @@ class PostController extends Controller
 
         return redirect()->route('admintable')->with('status', "New delete!");
     }
-<<<<<<< HEAD
-=======
-    public function edit(Request $request) {
-        //dd($request);
-        //$name = $request->input('stud_name');
-        $model=Posts::find($request->input('id'));
-        $model->title=$request->input('title');
-        $model->save();
-        //Post::update('update student set name = ? where id = ?',[$id, $title, $body, $slug, $active, $created_at, $updated_at]);
-        return redirect()->back()->with('status', 'Profile updated!');;
-  }
->>>>>>> 958d6025c522604f65edb0b51516a6ddeb68f951
 }
