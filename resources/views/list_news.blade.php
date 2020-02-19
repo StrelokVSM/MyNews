@@ -112,7 +112,11 @@
                 <span class="input-group-text"></span>
             </div>
             <textarea class="form-control" aria-label="With textarea" name="body"></textarea>
+<<<<<<< HEAD
           </div><br>
+=======
+        </div><br>
+>>>>>>> 088a6caea8f0521c507f17bd62054d7b18b47f05
           @csrf
           <div class="form-group row mb-0">
               <div class="col-md-6 offset-md-4">
