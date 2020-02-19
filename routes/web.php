@@ -19,7 +19,8 @@ Route::get('/admintable', 'PostController@index_admin')->name('admintable');
 Route::get('/admintable/{id}', 'PostController@show_admin')->name('edit_new');//передаем параметр id форме
 Route::post('/admintable/{id}', 'PostController@edit');//передаем параметр id форме
 Route::get('/insert-new', 'PostController@insertform')->name('insertform');//передаем параметр id форме
-Route::post('/create-new', 'PostController@insert')->name('create_new');
+Route::post('/create_new', 'PostController@insert')->name('create_new');
+Route::post('/create-comment', 'CommentController@insert')->name('create_comment');
 
 Route::get('/admintable/delete/{id}', 'PostController@delete')->name('delete_new');//передаем параметр id форме
 

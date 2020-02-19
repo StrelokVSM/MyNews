@@ -28,7 +28,7 @@ class PostController extends Controller
         return view('/insert_new');
     }
     public function insert(Request $request) {
-        //Редактирование новости
+        //Добавление новости
         $model= new Posts;
         $model->user_id = $request->input('user_id');
         $model->title = $request->input('title');

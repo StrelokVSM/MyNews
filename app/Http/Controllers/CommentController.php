@@ -19,4 +19,15 @@ class CommentController extends Controller
 
       return redirect()->back()->with('status', "comments delete!");
   }
+  public function insert(Request $request){
+      //Добавление комментария
+      $model= new Comments;
+      $model->post_id = $request->input('post_id');
+      $model->user_id = $request->input('user_id');
+      $model->body = $request->input('body');
+
+      $model->save();
+
+      return back();
+  }
 }

@@ -80,16 +80,49 @@
 
       </p>
       @foreach($data->comments as $comment)
-      <div class="comm">
-        <sub align="right"><b>{{$comment->author->name}}</b> {{$comment->created_at}}</sub>
-        <hr size="1" color="#000000"/>
-        <p>{{ $comment->body }}
-        <a class="btn" title="Delete" href="{{ route('delete_comment', ['id'=>$comment->id])  }}">X</a></p>
-        <hr size="2" color="#ff4000"/>
-      </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card mb-10 shadow-sm">
+                    <p class="card-text">
+                        <div class="alert alert-secondary" role="alert">
+                            <p><b>{{$comment->author->name}}</b>
+                            <small align="right">{{$comment->created_at}}</small>
+                        </div>
+                      <div class="d-flex justify-content-between align-items-center">
+
+                            <p>
+                                {{ $comment->body }}</p>
+                                <a type="button" class="btn btn-sm btn-outline-secondary" title="Delete" href="{{ route('delete_comment', ['id'=>$comment->id])  }}">X</a>
+
+
+                        <small class="text-muted">{{ $data->created_at }}</small>
+                      </div>
+                    </p>
+                </p>
+                </div>
+            </div>
+        </div><br>
       @endforeach
+      <form action={{route('create_comment')}} method="POST">
+          <?php  $user_id = Auth::user()->id; ?>
+          <input type="hidden" name="user_id" value='{{ $user_id }}'>
+          <input type="hidden" name="post_id" value='{{ $data->id }}'>
+          <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"></span>
+            </div>
+            <textarea class="form-control" aria-label="With textarea" name="body"></textarea>
+          </div><br>
+          @csrf
+          <div class="form-group row mb-0">
+              <div class="col-md-6 offset-md-4">
+                  <button type="submit" class="btn btn-primary">
+                      {{ __('Добавить') }}
+                  </button>
+              </div>
+          </div>
+      </form>
     </div>
   </div>
 </div>
-
 @endsection
